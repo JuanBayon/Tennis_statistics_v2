@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779983162783",
+    "project_id": "tennis-42e1d",
+    "storage_bucket": "tennis-42e1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779983162783:android:298ce1df548597856301aa",
+        "android_client_info": {
+          "package_name": "com.uoc.tennis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtJM9h0Il_0k3ekg8TibfNdAGY2QLi0CE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

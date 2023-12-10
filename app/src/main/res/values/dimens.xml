@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    Because the window insets on round devices are larger than 15dp, this padding only applies
+    to square screens.
+    -->
+    <dimen name="box_inset_layout_padding">0dp</dimen>
+
+    <!--
+    This padding applies to both square and round screens. The total padding between the buttons
+    and the window insets is box_inset_layout_padding (above variable) on square screens and
+    inner_frame_layout_padding (below variable) on round screens.
+    -->
+    <dimen name="inner_frame_layout_padding">5dp</dimen>
+    <dimen name="topMargin">1dp</dimen>
+    <dimen name="titleSize">18sp</dimen>
+    <dimen name="textSize">14sp</dimen>
+    <dimen name="radius">12sp</dimen>
+    <dimen name="marginTopButton">12sp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="borderConfig">0.5dip</dimen>
+    <dimen name="textSizeConfig">12sp</dimen>
+    <dimen name="paddingConfig">2dip</dimen>
+    <dimen name="editTextWidth">200dp</dimen>
+    <dimen name="editTextHeight">39dp</dimen>
+    <dimen name="keyboardWidth">200dp</dimen>
+    <dimen name="editTextPadding">10dp</dimen>
+    <dimen name="keyboardButtonWidth">52dp</dimen>
+    <dimen name="keyboardButtonHeight">31dp</dimen>
+    <dimen name="keyboardButtonTextSize">8dp</dimen>
+    <dimen name="keyboardScrollViewWidth">172dp</dimen>
+    <dimen name="keyboardScrollViewHeight">135dp</dimen>
+</resources>
