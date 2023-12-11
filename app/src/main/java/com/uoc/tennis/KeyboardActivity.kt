@@ -15,7 +15,6 @@ import com.uoc.tennis.databinding.KeyboardActivityBinding
 
 class KeyboardActivity: Activity(), View.OnClickListener {
 
-    private val mTextView: TextView? = null
     private var editText: EditText? = null
     private var del: Button? = null
     private var OK: Button? = null
