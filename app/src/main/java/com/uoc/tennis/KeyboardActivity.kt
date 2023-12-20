@@ -20,7 +20,6 @@ class KeyboardActivity: Activity(), View.OnClickListener {
     private var OK: Button? = null
     private var exit: Button? = null
     private var scroll: RelativeLayout? = null
-    private var numbers = "12345678 90 "
     private var buttons = ArrayList<Button>()
     private var textInput: String? = MainActivity.NONE
     private var _binding: KeyboardActivityBinding? = null
@@ -38,7 +37,7 @@ class KeyboardActivity: Activity(), View.OnClickListener {
             textInput = editText!!.text.toString()
             exit(textInput!!)
         }
-        setKeyboardCharacters(numbers)
+        setKeyboardCharacters(NUMBERS)
         del = findViewById<View>(R.id.backspace) as Button
         del!!.setOnClickListener {
             if (editText!!.text.toString().isNotEmpty()) {
@@ -54,6 +53,9 @@ class KeyboardActivity: Activity(), View.OnClickListener {
 
     }
 
+    /**
+     * Save the data and exits the activity
+     */
     private fun exit(text: String) {
         val intent = Intent().apply {
             putExtra(MainActivity.OPTION, text)
@@ -68,6 +70,9 @@ class KeyboardActivity: Activity(), View.OnClickListener {
         editText!!.setText(editText!!.text.toString() + "" + button.text)
     }
 
+    /**
+     * Creates the keyboard, with the numbers provided
+     */
     private fun setKeyboardCharacters(characters: String) {
         for (i in characters.indices) {
             val b = Button(applicationContext)
@@ -97,13 +102,21 @@ class KeyboardActivity: Activity(), View.OnClickListener {
                 lp.addRule(RelativeLayout.BELOW, R.id.textedit)
             }
             currentButton.layoutParams = lp
-            currentButton.text = characters[i].toString() + ""
+            currentButton.text = characters[i].toString() + EMPTY
             currentButton.setOnClickListener { v ->
                 val button = v as Button
-                editText!!.setText(editText!!.text.toString() + "" + button.text)
+                editText!!.setText(editText!!.text.toString() + EMPTY + button.text)
             }
             scroll!!.addView(currentButton)
         }
+    }
+
+    /**
+     * Constants of the class
+     */
+    companion object {
+        private const val EMPTY = ""
+        private const val NUMBERS = "12345678 90 "
     }
 
 }
