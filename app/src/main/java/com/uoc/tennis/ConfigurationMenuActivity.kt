@@ -74,6 +74,10 @@ class ConfigurationMenuActivity : Activity() {
         }
     }
 
+    /**
+     * Starts the submenu activity, setting the text of the buttons with the three strings provided as arguments (from the resources).
+     * The value of the buttons corresponds to the constant variables passed also as arguments.
+     */
     fun action(firstText: String, secondText: String, thirdText: String?, option: String, firstOption: String, secondOption: String, thirdOption: String?) {
         val intent = Intent(this, ConfigurationActivity::class.java).apply {
             putExtra(MainActivity.FIRST_LABEL, firstText)
@@ -87,11 +91,17 @@ class ConfigurationMenuActivity : Activity() {
         startActivityForResult(intent, MainActivity.CONFIGURATION_MENU)
     }
 
+    /**
+     * Starts the keyboardActivity to set the age.
+     */
     fun setAge() {
         val intent = Intent(this, KeyboardActivity::class.java)
         startActivityForResult(intent, MainActivity.CONFIGURATION_MENU)
     }
 
+    /**
+     * Saves the data and finishes the activity.
+     */
     fun cancelMenu() {
         val intent = Intent().apply {
             putExtra(MainActivity.BACKHAND, backhandConfiguration)

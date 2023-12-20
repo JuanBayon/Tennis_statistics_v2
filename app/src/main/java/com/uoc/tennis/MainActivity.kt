@@ -11,11 +11,13 @@ import android.view.View
 import android.widget.Button
 import com.uoc.tennis.databinding.ActivityMainBinding
 import android.hardware.SensorEventListener
+import android.util.Log
 import android.view.View.OnClickListener
 import android.widget.TextView
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.Exception
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 
@@ -47,8 +49,6 @@ class MainActivity : Activity(), SensorEventListener, OnClickListener {
     data class SensorData(
         val x: Double, val y: Double, val z: Double,
         val timestamp: String, val sensor: String, val sessionID: Int)
-
-    //TODO try/catch y logger
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -125,22 +125,32 @@ class MainActivity : Activity(), SensorEventListener, OnClickListener {
         age = data.getStringExtra(AGE)!!
         laterality = data.getStringExtra(LATERALITY)!!
         backhand = data.getStringExtra(BACKHAND)!!
+        Log.i(getString(R.string.config), getString(R.string.data))
     }
 
+    /**
+     * Saves in FireStore all the data present in the list of SensorData and the attributes of the session.
+     */
     private fun saveInDatabase() {
-        val hashMap = hashMapOf(
-            ENTRIES to dataArray.map { jacksonMapper.convertValue(it, Map::class.java) },
-            PLAYER_TYPE to playerType,
-            STROKE_TYPE to hitType,
-            GENDER to gender,
-            NUM_ENTRIES to numberDatum,
-            LATERALITY to laterality,
-            BACKHAND to backhand,
-            AGE to age
-        )
-        dataArray.clear()
-        numberDatum = INITIAL_DATUM
-        firebase.collection(COLLECTION).add(hashMap)
+        try {
+            val hashMap = hashMapOf(
+                ENTRIES to dataArray.map { jacksonMapper.convertValue(it, Map::class.java) },
+                PLAYER_TYPE to playerType,
+                STROKE_TYPE to hitType,
+                GENDER to gender,
+                NUM_ENTRIES to numberDatum,
+                LATERALITY to laterality,
+                BACKHAND to backhand,
+                AGE to age
+            )
+            dataArray.clear()
+            numberDatum = INITIAL_DATUM
+            firebase.collection(COLLECTION).add(hashMap)
+            Log.i(getString(R.string.firebase), getString(R.string.data))
+        } catch (e: Exception){
+            Log.e(getString(R.string.error), getString(R.string.data_error) + e.message)
+        }
+
     }
 
     companion object Constants {

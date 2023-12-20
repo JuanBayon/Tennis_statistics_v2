@@ -36,4 +36,10 @@
     <string name="cancel">EXIT</string>
     <string name="ok">OK</string>
     <string name="del">DEL</string>
+    <string name="data">Data saved correctly</string>
+    <string name="analyze">Analyzed data</string>
+    <string name="config">Configuration data</string>
+    <string name="firebase">Firebase data</string>
+    <string name="error">Error</string>
+    <string name="data_error">Data not saved</string>
 </resources>

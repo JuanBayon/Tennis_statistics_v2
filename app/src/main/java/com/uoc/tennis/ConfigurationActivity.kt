@@ -60,6 +60,9 @@ class ConfigurationActivity : Activity() {
         }
     }
 
+    /**
+     * Saves the data and exits the activity.
+     */
     private fun exit () {
         val intent = Intent().apply {
             putExtra(MainActivity.OPTION, option)
